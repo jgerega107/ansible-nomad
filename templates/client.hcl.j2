@@ -12,8 +12,13 @@ client {
     servers = [
         {%- set comma = joiner(",") -%}
         {%- for server in nomad_servers -%}
-            {{ comma() }}"{{ hostvars[server]['nomad_advertise_address'] | ansible.utils.ipwrap }}:{{ nomad_ports.rpc }}"
-        {%- endfor -%} ]
+            {% if nomad_external_servers %}
+                {{ comma() }}"{{ server }}:{{ nomad_ports.rpc }}"
+            {% else %}
+                {{ comma() }}"{{ hostvars[server]['nomad_advertise_address'] | ansible.utils.ipwrap }}:{{ nomad_ports.rpc }}"
+            {% endif %}
+        {%- endfor -%}
+        ]
 {% endif %}
 
     max_kill_timeout = "{{ nomad_max_kill_timeout }}"

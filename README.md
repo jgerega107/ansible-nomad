@@ -491,6 +491,13 @@ in many Ansible versions, so this feature might not always work.
 - Gather facts from servers that are not currently targeted
 - Default value: 'no'
 
+### `nomad_external_servers`
+
+This feature allows you to specify external, already configured servers,
+not managed by this playbook.
+
+- Default value: 'no'
+
 ### `nomad_use_consul`
 
 - Bootstrap nomad via native consul zero-configuration support
