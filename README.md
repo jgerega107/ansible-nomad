@@ -489,7 +489,7 @@ To make this possible the `delegate_facts` option is used. This option is broken
 in many Ansible versions, so this feature might not always work.
 
 - Gather facts from servers that are not currently targeted
-- Default value: 'no'
+- Default value: **False**
 
 ### `nomad_external_servers`
 
